@@ -25,6 +25,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
     rm -f influxdb_${INFLUXDB_VERSION}_${ARCH}.deb*
 COPY influxdb.conf /etc/influxdb/influxdb.conf
 
+RUN apt-get update && apt-get install vim cron -y
+
 RUN mkdir -p /opt/influxdb
 
 COPY getBaculaInfo.sh bacula2Influx.sh /opt/influxdb/
